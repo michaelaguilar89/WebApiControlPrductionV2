@@ -10,6 +10,6 @@ namespace WebApi_Control_Production.Connection
 		
 		}
 
-		public DbSet<Production> productions { get; set; }	
+		public DbSet<Production> productions2 { get; set; }	
 	}
 }
