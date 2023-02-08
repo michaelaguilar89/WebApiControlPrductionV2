@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using WebApi_Control_Production.Connection;
 using WebApi_Control_Production.Models;
 
@@ -62,7 +63,7 @@ namespace WebApi_Control_Production.Repository_s
 		}
 		public async Task<List<Production>> Get()
 		{
-			var list = await _db.productions.ToListAsync();
+			var list = await _db.productions.OrderByDescending(x => x.fecha).ToListAsync();
 			return list;
 		}
 		public async Task<Production> GetProductionById(int id)
@@ -74,9 +75,11 @@ namespace WebApi_Control_Production.Repository_s
 		public async Task<List<Production>> GetProductionsByDate(DateTime date)
 		{
 
-			List<Production> lista = await _db.productions.Where(
-				x => x.fecha == date).OrderBy(x=>x.horaInicio).ToListAsync();
-				return lista;
+			List<Production> lista = await _db.productions.
+											OrderByDescending(x => x.horaInicio)
+								         	.Where(x => x.fecha == date).ToListAsync();
+				
+									 return lista;
 			
 		}
 	}

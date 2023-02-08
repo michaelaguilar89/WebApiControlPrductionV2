@@ -1,0 +1,179 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "WebApiContrlProduction2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Production": {
+      "get": {
+        "tags": [
+          "Production"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Production"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Production"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Production"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Production"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Production"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Production/{date}": {
+      "get": {
+        "tags": [
+          "Production"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Production"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Production/{id}": {
+      "delete": {
+        "tags": [
+          "Production"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Production": {
+      "required": [
+        "cantidad",
+        "fecha",
+        "horaInicio",
+        "lote",
+        "nivelFinal",
+        "productoName",
+        "responsable",
+        "tanque"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "fecha": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "tanque": {
+          "type": "string"
+        },
+        "productoName": {
+          "type": "string"
+        },
+        "lote": {
+          "type": "string"
+        },
+        "cantidad": {
+          "format": "double",
+          "type": "number"
+        },
+        "horaInicio": {
+          "type": "string"
+        },
+        "nivelFinal": {
+          "type": "string"
+        },
+        "responsable": {
+          "type": "string"
+        },
+        "comentario": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
