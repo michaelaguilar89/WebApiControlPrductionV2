@@ -30,10 +30,10 @@ namespace WebApi_Control_Production.Repository_s
 				await _db.SaveChangesAsync();
 				return mensaje;
 			}
-			catch (Exception )
+			catch (Exception e)
 			{
 
-				string mensaje = "-500";
+				string mensaje = "-500 : "+e.ToString();
 				return mensaje;
 			}
 		}

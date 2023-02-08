@@ -98,7 +98,8 @@ namespace WebApi_Control_Production.Controllers
 					_response.DisplayMessage = "Registro Creado";
 					return Ok(_response);
 				}
-				_response.DisplayMessage = "Error interno";
+
+				_response.DisplayMessage = "Error internal";
 				return BadRequest(_response);
 			}
 			catch (Exception e)
